@@ -137,5 +137,66 @@ namespace AddressBookSystem
                 }
             }
         }
+        public void searchperson()
+        {
+            Console.WriteLine("how you would like to search.");
+            Console.WriteLine("#1: using city\n #2: using state");
+            string inp = Console.ReadLine();
+          
+                switch (inp)
+                {
+                    case "1":
+                        {
+                            Console.WriteLine("Enter city : ");
+                            string city = Console.ReadLine();
+                        foreach (var i in People)
+                        {
+                            Person forcity = People.Find(a => i.City.Equals(city));
+                            if (forcity == null)
+                            {
+                                Console.WriteLine("Match not fund");
+                            }
+                            else
+                            {
+                                Console.WriteLine("match found");
+
+                                // Console.WriteLine("Neme of person is {0} {1}.", i.FirstName, i.LastName);
+                                Console.WriteLine(i);
+                                
+                            }
+                        }
+                            break;
+                        }
+
+                    case "2":
+
+                        {
+                            Console.WriteLine("Enter state : ");
+                            string state = Console.ReadLine();
+                        foreach (var i in People)
+                        {
+                            Person forstate = People.Find(a => i.State.Equals(state));
+                            if (forstate == null)
+                            {
+                                Console.WriteLine("Match not fund");
+                            }
+                            else
+                            {
+                                Console.WriteLine("match found");
+                               
+                                    Console.WriteLine("Neme of person is {0} {1}.", i.FirstName, i.LastName);
+                                }
+                            }
+                            break;
+                        }
+
+                    default:
+                        { 
+                            Console.WriteLine("Enter valid input!");
+                           
+                            break;
+                        }
+                }
+        }
     }
 }

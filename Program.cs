@@ -25,7 +25,8 @@ namespace AddressBookSystem
                 Console.WriteLine("#2 Edit user information");
                 Console.WriteLine("#3 Delete existing user");
                 Console.WriteLine("#4 Show all users in adressBook");
-                Console.WriteLine("#5 Exit");
+                Console.WriteLine("#5 Search by using city or state");
+                Console.WriteLine("#6 Exit");
             }
             while (choice)
             {
@@ -49,6 +50,9 @@ namespace AddressBookSystem
                         Adr.printUser();
                         break;
                     case 5:
+                        Adr.searchperson();
+                        break;
+                    case 6:
                         choice = false;
                         break;
                     default:
