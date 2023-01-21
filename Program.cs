@@ -89,6 +89,7 @@ namespace AddressBookSystem
                 string EmailId = Console.ReadLine();
                 Adr.createUser(FirstName, LastName, Address, City, State, ZipCode, PhoneNum, EmailId);
             }
+            Adr.countperson();
         }
     }
 }
