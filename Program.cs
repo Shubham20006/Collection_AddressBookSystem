@@ -13,7 +13,6 @@ namespace AddressBookSystem
         {
             Console.WriteLine("Welcome to Address Book Program");
             bool choice = true;
-
             AddressBook Adr = new AddressBook();           
             Adr.createUser();
 
