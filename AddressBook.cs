@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,43 +10,37 @@ namespace AddressBookSystem
 {
     public interface IAddressBookSystem
     {
-        void createUser();
+      //  void createUser();
         void printUser();
         void editContact();
         void deleteContact();
     }
     public class AddressBook: IAddressBookSystem
     {
-        public static LinkedList<Person> People = new LinkedList<Person>();
-        public void createUser()
+        public static List<Person> People = new List<Person>();
+        public void createUser(string FirstName, string LastName, string Address, string City, string State, string ZipCode, string PhoneNum, string EmailId)
         {
-            Person person = new Person();
+            Person person = new Person(FirstName, LastName, Address, City, State, ZipCode, PhoneNum, EmailId);
 
-            Console.Write("Enter First Name: ");
-            person.FirstName = Console.ReadLine();
-
-            Console.Write("Enter Last Name: ");
-            person.LastName = Console.ReadLine();
-
-            Console.Write("Enter Address : ");
-            person.Address = Console.ReadLine();
-
-            Console.Write("Enter City : ");
-            person.City = Console.ReadLine();
-
-            Console.Write("Enter State : ");
-            person.State = Console.ReadLine();
-
-            Console.Write("Enter ZipCode: ");
-            person.ZipCode = Console.ReadLine();
-
-            Console.Write("Enter Phone Number: ");
-            person.PhoneNum = Console.ReadLine();
-
-            Console.Write("Enter EmailId: ");
-            person.EmailId = Console.ReadLine();
-
-            People.AddLast(person);
+            if (People.Count == 0)
+            {
+                People.Add(person);
+            }
+            else
+            {
+                Person people = People.Find(a => a.FirstName.Equals(FirstName));              
+                if (people == null)
+                {
+                    Person p = new Person(FirstName, LastName, Address, City, State, ZipCode, PhoneNum, EmailId);
+                    People.Add(p);
+                }
+                else
+                {
+                    Console.WriteLine("-------Record is already exists-------");
+                    Console.WriteLine("Modify the details which has duplicate name");
+                    editContact();
+                }
+            }
         }
         public void printUser()
         {

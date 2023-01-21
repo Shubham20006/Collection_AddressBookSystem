@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Reflection.Emit;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,17 +15,17 @@ namespace AddressBookSystem
         {
             Console.WriteLine("Welcome to Address Book Program");
             bool choice = true;
-            AddressBook Adr = new AddressBook();           
-            Adr.createUser();
+            AddressBook Adr = new AddressBook();
+            details();
 
-          static void UserChoice() 
+            static void UserChoice()
             {
                 Console.WriteLine("Choose one of the following options: ");
                 Console.WriteLine("#1 Create new user");
                 Console.WriteLine("#2 Edit user information");
                 Console.WriteLine("#3 Delete existing user");
                 Console.WriteLine("#4 Show all users in adressBook");
-                Console.WriteLine("#5 Exit");              
+                Console.WriteLine("#5 Exit");
             }
             while (choice)
             {
@@ -32,7 +34,7 @@ namespace AddressBookSystem
                 switch (Choice)
                 {
                     case 1:
-                        Adr.createUser();
+                        details();
                         Adr.printUser();
                         break;
                     case 2:
@@ -54,6 +56,34 @@ namespace AddressBookSystem
                         break;
 
                 }
+            }
+          static void details()
+            {
+                AddressBook Adr = new AddressBook();
+                Console.WriteLine("Enter FirstName:");
+                string FirstName = Console.ReadLine();
+
+                Console.WriteLine("Enter LastName:");
+                string LastName = Console.ReadLine();
+
+                Console.WriteLine("Enter Address:");
+                string Address = Console.ReadLine();
+
+                Console.WriteLine("Enter City:");
+                string City = Console.ReadLine();
+
+                Console.WriteLine("Enter State:");
+                string State = Console.ReadLine();
+
+                Console.WriteLine("Enter Zip:");
+                string ZipCode = Console.ReadLine();
+
+                Console.WriteLine("Enter PhoneNum:");
+                string PhoneNum = Console.ReadLine();
+
+                Console.WriteLine("Enter Email:");
+                string EmailId = Console.ReadLine();
+                Adr.createUser(FirstName, LastName, Address, City, State, ZipCode, PhoneNum, EmailId);
             }
         }
     }
