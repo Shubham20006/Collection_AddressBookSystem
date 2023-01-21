@@ -47,11 +47,11 @@ namespace AddressBookSystem
                 Console.ReadKey();
                 return;
             }
-            Console.WriteLine("Here are the current {0} people in your address book:\n", People.Count);
+            Console.WriteLine("\nHere are the current {0} people in your address book:\n", People.Count);
             foreach (var person in People)
             {
-                Console.WriteLine("**** Peoples present in list are : ");
                 Console.WriteLine(" FirstName: {0},\n LastName: {1},\n Adress: {2},\n City : {3},\n State: {4},\n Zip: {5},\n PhoneNum: {6},\n Email: {7}", person.FirstName, person.LastName, person.Address, person.City, person.State, person.ZipCode, person.PhoneNum, person.EmailId);
+                Console.WriteLine("________________________________");
             }
         }
         public  void editContact()
@@ -115,6 +115,23 @@ namespace AddressBookSystem
             else
             {
                 Console.WriteLine("Enter the valid name!");
+            }
+        }
+        public  void deleteContact()
+        {
+            Console.WriteLine("Enter the first name of the person you would like to remove.");
+            string Remove = Console.ReadLine();
+            foreach (var person in People.ToList())
+            {
+                if (person.FirstName.ToUpper() == Remove.ToUpper())
+                {
+                    People.Remove(person);
+                    Console.WriteLine("Contact is deleted");
+                }
+                else
+                {
+                    Console.WriteLine("Contact is not present");
+                }
             }
         }
     }
