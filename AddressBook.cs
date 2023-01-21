@@ -6,9 +6,16 @@ using System.Threading.Tasks;
 
 namespace AddressBookSystem
 {
-    public class AddressBook
+    public interface IAddressBookSystem
     {
-        public static List<Person> People = new List<Person>();
+        void createUser();
+        void printUser();
+        void editContact();
+        void deleteContact();
+    }
+    public class AddressBook: IAddressBookSystem
+    {
+        public static LinkedList<Person> People = new LinkedList<Person>();
         public void createUser()
         {
             Person person = new Person();
@@ -37,7 +44,7 @@ namespace AddressBookSystem
             Console.Write("Enter EmailId: ");
             person.EmailId = Console.ReadLine();
 
-            People.Add(person);
+            People.AddLast(person);
         }
         public void printUser()
         {
