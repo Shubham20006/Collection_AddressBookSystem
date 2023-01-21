@@ -41,10 +41,17 @@ namespace AddressBookSystem
         }
         public void printUser()
         {
-            foreach(var person in People )
+            if (People.Count == 0)
+            {
+                Console.WriteLine("Your address book is empty.");
+                Console.ReadKey();
+                return;
+            }
+            Console.WriteLine("Here are the current {0} people in your address book:\n",People.Count);
+            foreach (var person in People )
             {
                 Console.WriteLine("**** Peoples present in list are : ");
-                Console.WriteLine(" FirstName: {0},\n LastName: {1},\n Adress: {2},\n City :\n {3},\n State: {4},\n Zip: {5},\n PhoneNum: {6},\n Email: {7}", person.FirstName, person.LastName, person.Address, person.City, person.State, person.ZipCode, person.PhoneNum, person.EmailId);
+                Console.WriteLine(" FirstName: {0},\n LastName: {1},\n Adress: {2},\n City : {3},\n State: {4},\n Zip: {5},\n PhoneNum: {6},\n Email: {7}", person.FirstName, person.LastName, person.Address, person.City, person.State, person.ZipCode, person.PhoneNum, person.EmailId);
             }
         }
         
