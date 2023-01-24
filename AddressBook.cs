@@ -15,10 +15,10 @@ namespace AddressBookSystem
         void editContact();
         void deleteContact();
     }
-    public class AddressBook: IAddressBookSystem
+    public class AddressBook : IAddressBookSystem
     {
         public static List<Person> People = new List<Person>();
-        
+
         public void createUser(string FirstName, string LastName, string Address, string City, string State, string ZipCode, string PhoneNum, string EmailId)
         {
             Person person = new Person(FirstName, LastName, Address, City, State, ZipCode, PhoneNum, EmailId);
@@ -29,7 +29,7 @@ namespace AddressBookSystem
             }
             else
             {
-                Person people = People.Find(a => a.FirstName.Equals(FirstName));              
+                Person people = People.Find(a => a.FirstName.Equals(FirstName));
                 if (people == null)
                 {
                     Person p = new Person(FirstName, LastName, Address, City, State, ZipCode, PhoneNum, EmailId);
@@ -45,22 +45,22 @@ namespace AddressBookSystem
         }
         public void printUser()
         {
-            List<Person> SortedList = People.OrderBy(o => o.FirstName).ToList();
-            if (SortedList.Count == 0)
+          
+            if (People.Count == 0)
             {
                 Console.WriteLine("Your address book is empty.");
                 Console.ReadKey();
                 return;
             }
             Console.WriteLine("\nHere are the current {0} people in your address book:\n", People.Count);
-            Console.WriteLine("*****list sorted by firstname.*****");
-            foreach (var person in SortedList)
+          
+            foreach (var person in People)
             {
                 Console.WriteLine(" FirstName: {0},\n LastName: {1},\n Adress: {2},\n City : {3},\n State: {4},\n Zip: {5},\n PhoneNum: {6},\n Email: {7}", person.FirstName, person.LastName, person.Address, person.City, person.State, person.ZipCode, person.PhoneNum, person.EmailId);
                 Console.WriteLine("________________________________");
             }
         }
-        public  void editContact()
+        public void editContact()
         {
             if (People.Count != 0)
             {
@@ -74,7 +74,7 @@ namespace AddressBookSystem
                         {
                             Console.WriteLine("Which information do you want to Edit?");
                             Console.WriteLine("#1: Firstname, #2: Lastname, 3#: Address, 4#: City, 5#: State, 6#: Zipcode, 7#: PhoneNum, 8#: EmailId, 9#: Exit");
-                            int userOption = Convert.ToInt32(Console.ReadLine()); 
+                            int userOption = Convert.ToInt32(Console.ReadLine());
                             switch (userOption)
                             {
                                 case 1:
@@ -88,7 +88,7 @@ namespace AddressBookSystem
                                 case 3:
                                     Console.WriteLine("Enter the New Address: ");
                                     person.Address = Console.ReadLine();
-                                    break;                              
+                                    break;
                                 case 4:
                                     Console.WriteLine("Enter the New City: ");
                                     person.City = Console.ReadLine();
@@ -123,7 +123,7 @@ namespace AddressBookSystem
                 Console.WriteLine("Enter the valid name!");
             }
         }
-        public  void deleteContact()
+        public void deleteContact()
         {
             Console.WriteLine("Enter the first name of the person you would like to remove.");
             string Remove = Console.ReadLine();
@@ -145,13 +145,13 @@ namespace AddressBookSystem
             Console.WriteLine("how you would like to search.");
             Console.WriteLine("#1: using city\n #2: using state");
             string inp = Console.ReadLine();
-          
-                switch (inp)
-                {
-                    case "1":
-                        {
-                            Console.WriteLine("Enter city : ");
-                            string city = Console.ReadLine();
+
+            switch (inp)
+            {
+                case "1":
+                    {
+                        Console.WriteLine("Enter city : ");
+                        string city = Console.ReadLine();
                         foreach (var i in People)
                         {
                             Person forcity = People.Find(a => i.City.Equals(city));
@@ -168,17 +168,17 @@ namespace AddressBookSystem
                                 Console.WriteLine(" FirstName: {0},\n LastName: {1},\n Adress: {2},\n City : {3},\n State: {4},\n Zip: {5},\n PhoneNum: {6},\n Email: {7}", i.FirstName, i.LastName, i.Address, i.City, i.State, i.ZipCode, i.PhoneNum, i.EmailId);
                                 Console.WriteLine("-----------------------------------------------------------------");
                                 Console.WriteLine();
-                                
+
                             }
                         }
-                            break;
-                        }
+                        break;
+                    }
 
-                    case "2":
+                case "2":
 
-                        {
-                            Console.WriteLine("Enter state : ");
-                            string state = Console.ReadLine();
+                    {
+                        Console.WriteLine("Enter state : ");
+                        string state = Console.ReadLine();
                         foreach (var i in People)
                         {
                             Person forstate = People.Find(a => i.State.Equals(state));
@@ -189,23 +189,23 @@ namespace AddressBookSystem
                             else
                             {
                                 Console.WriteLine("match found\n");
-                               
-                                    Console.WriteLine("Neme of person is {0} {1}.", i.FirstName, i.LastName+"\n");
+
+                                Console.WriteLine("Neme of person is {0} {1}.", i.FirstName, i.LastName + "\n");
                                 Console.WriteLine("Details of person\n");
                                 Console.WriteLine(" FirstName: {0},\n LastName: {1},\n Adress: {2},\n City : {3},\n State: {4},\n Zip: {5},\n PhoneNum: {6},\n Email: {7}", i.FirstName, i.LastName, i.Address, i.City, i.State, i.ZipCode, i.PhoneNum, i.EmailId);
                                 Console.WriteLine("-----------------------------------------------------------------");
                                 Console.WriteLine();
                             }
-                            }
-                            break;
                         }
+                        break;
+                    }
 
-                    default:
-                        { 
-                            Console.WriteLine("Enter valid input!");                        
-                            break;
-                        }
-                }
+                default:
+                    {
+                        Console.WriteLine("Enter valid input!");
+                        break;
+                    }
+            }
         }
         public void countperson()
         {
@@ -223,9 +223,9 @@ namespace AddressBookSystem
                             {
                                 count++;
                             }
-                           
+
                         }
-                        Console.WriteLine("\nHere are the current {0} contacts in your address book:\n", count); 
+                        Console.WriteLine("\nHere are the current {0} contacts in your address book:\n", count);
                         break;
                     }
                 case "2":
@@ -244,6 +244,67 @@ namespace AddressBookSystem
                     }
             }
         }
-        
+        public void sorting()
+        {
+            Console.WriteLine("how you would like to Sort the list.");
+            Console.WriteLine(" #1: using FirstName\n #2: using city\n #3: using State");
+            string inp = Console.ReadLine();
+            switch (inp)
+            {
+                case "1":
+                    {
+                        List<Person> SortedList = People.OrderBy(o => o.FirstName).ToList();
+                        Console.WriteLine("*****list sorted by firstname.*****");
+                        foreach (var person in SortedList)
+                        {
+                            Console.WriteLine(" FirstName: {0},\n LastName: {1},\n Adress: {2},\n City : {3},\n State: {4},\n Zip: {5},\n PhoneNum: {6},\n Email: {7}", person.FirstName, person.LastName, person.Address, person.City, person.State, person.ZipCode, person.PhoneNum, person.EmailId);
+                            Console.WriteLine("________________________________");
+                        }break;
+
+                    }
+                case "2":
+                    {
+                        List<Person> SortedList = People.OrderBy(o => o.City).ToList();
+                        Console.WriteLine("*****list sorted by City.*****");
+                        foreach (var person in SortedList)
+                        {
+                            Console.WriteLine(" FirstName: {0},\n LastName: {1},\n Adress: {2},\n City : {3},\n State: {4},\n Zip: {5},\n PhoneNum: {6},\n Email: {7}", person.FirstName, person.LastName, person.Address, person.City, person.State, person.ZipCode, person.PhoneNum, person.EmailId);
+                            Console.WriteLine("________________________________");
+                        }
+                        break;
+
+                    }
+                case "3":
+                    {
+                        List<Person> SortedList = People.OrderBy(o => o.State).ToList();
+                        Console.WriteLine("*****list sorted by State.*****");
+                        foreach (var person in SortedList)
+                        {
+                            Console.WriteLine(" FirstName: {0},\n LastName: {1},\n Adress: {2},\n City : {3},\n State: {4},\n Zip: {5},\n PhoneNum: {6},\n Email: {7}", person.FirstName, person.LastName, person.Address, person.City, person.State, person.ZipCode, person.PhoneNum, person.EmailId);
+                            Console.WriteLine("________________________________");
+                        }
+                        break;
+
+                    }
+                case "4":
+                    {
+                        List<Person> SortedList = People.OrderBy(o => o.ZipCode).ToList();
+                        Console.WriteLine("*****list sorted by Zipcode.*****");
+                        foreach (var person in SortedList)
+                        {
+                            Console.WriteLine(" FirstName: {0},\n LastName: {1},\n Adress: {2},\n City : {3},\n State: {4},\n Zip: {5},\n PhoneNum: {6},\n Email: {7}", person.FirstName, person.LastName, person.Address, person.City, person.State, person.ZipCode, person.PhoneNum, person.EmailId);
+                            Console.WriteLine("________________________________");
+                        }
+                        break;
+
+                    }
+                default:
+                    {
+                        Console.WriteLine("EnterValid Input");
+                        break;
+                    }
+
+            }
+        }
     }
 }

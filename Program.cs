@@ -27,8 +27,9 @@ namespace AddressBookSystem
                 Console.WriteLine("#4 Show all users in adressBook");
                 Console.WriteLine("#5 Search by using city or state");
                 Console.WriteLine("#6 Count by using city or state");
+                Console.WriteLine("#7 Count by FirstName / city / state / zip");
 
-                Console.WriteLine("#7 Exit");
+                Console.WriteLine("#8 Exit");
             }
             while (choice)
             {
@@ -58,6 +59,9 @@ namespace AddressBookSystem
                         Adr.countperson();
                         break;
                     case 7:
+                        Adr.sorting();
+                        break;
+                    case 8:
                         choice = false;
                         break;
                     default:
