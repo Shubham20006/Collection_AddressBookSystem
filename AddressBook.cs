@@ -18,6 +18,7 @@ namespace AddressBookSystem
     public class AddressBook: IAddressBookSystem
     {
         public static List<Person> People = new List<Person>();
+        
         public void createUser(string FirstName, string LastName, string Address, string City, string State, string ZipCode, string PhoneNum, string EmailId)
         {
             Person person = new Person(FirstName, LastName, Address, City, State, ZipCode, PhoneNum, EmailId);
@@ -44,14 +45,16 @@ namespace AddressBookSystem
         }
         public void printUser()
         {
-            if (People.Count == 0)
+            List<Person> SortedList = People.OrderBy(o => o.FirstName).ToList();
+            if (SortedList.Count == 0)
             {
                 Console.WriteLine("Your address book is empty.");
                 Console.ReadKey();
                 return;
             }
             Console.WriteLine("\nHere are the current {0} people in your address book:\n", People.Count);
-            foreach (var person in People)
+            Console.WriteLine("*****list sorted by firstname.*****");
+            foreach (var person in SortedList)
             {
                 Console.WriteLine(" FirstName: {0},\n LastName: {1},\n Adress: {2},\n City : {3},\n State: {4},\n Zip: {5},\n PhoneNum: {6},\n Email: {7}", person.FirstName, person.LastName, person.Address, person.City, person.State, person.ZipCode, person.PhoneNum, person.EmailId);
                 Console.WriteLine("________________________________");
@@ -241,5 +244,6 @@ namespace AddressBookSystem
                     }
             }
         }
+        
     }
 }
