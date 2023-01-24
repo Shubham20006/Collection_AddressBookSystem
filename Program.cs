@@ -68,7 +68,9 @@ namespace AddressBookSystem
                         Adr.WritingAndReadingStream();
                         break;
                     case 9:
-                      Adr.WritingtoCSV();                      
+                    //  Adr.WritingtoCSV();
+                    Adr.usingJson();
+                  // Adr.jsonread();
                         break;
                     case 10:
                         choice = false;

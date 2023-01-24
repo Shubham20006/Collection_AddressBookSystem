@@ -1,12 +1,15 @@
 ﻿using CsvHelper;
 using System;
 using System.Collections.Generic;
+using System.Formats.Asn1;
 using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Reflection.Emit;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace AddressBookSystem
 {
@@ -328,10 +331,10 @@ namespace AddressBookSystem
         public void WritingtoCSV()
         {
             string importFilePath = @"C:\Users\Hp\Desktop\240\AddressBookSystem\AddressBookSystem\csvData.csv";
-            {             
+            {
                 using (var writer = new StreamWriter(importFilePath))
                 using (var csvExport = new CsvWriter(writer, CultureInfo.InvariantCulture))
-                {                   
+                {
                     foreach (var person in People)
                     {
                         csvExport.WriteField(" FirstName " + person.FirstName);
@@ -348,7 +351,7 @@ namespace AddressBookSystem
                     }
                 }
             }
-           
+
         }
         public void ReadingCSV()
         {
@@ -356,7 +359,7 @@ namespace AddressBookSystem
             using (var reader = new StreamReader(FilePath))
             using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
-                
+
                 var records = csv.GetRecords<Person>().ToList();
                 foreach (var person in records)
                 {
@@ -371,6 +374,31 @@ namespace AddressBookSystem
                     Console.WriteLine("-----------------------------------");
                 }
             }
+
+        }
+        public void usingJson()
+        {
+            string jsonFilePath = "C:\\Users\\Hp\\Desktop\\240\\AddressBookSystem\\AddressBookSystem\\CSVtoJsonFile.json";
+            JsonSerializer serializer = new JsonSerializer();
+            using (StreamWriter sw = new StreamWriter(jsonFilePath))
+            using (JsonWriter writer = new JsonTextWriter(sw))
+            {
+                serializer.Serialize(writer, People);
+                Console.WriteLine("added Data in Json file ");               
+            }
+        }
+        public void jsonread()
+        {
+            string jsonFilePath = File.ReadAllText("C:\\Users\\Hp\\Desktop\\240\\AddressBookSystem\\AddressBookSystem\\CSVtoJsonFile.json");
+            using (StreamReader r = new StreamReader(jsonFilePath))
+            {
+                string json = r.ReadToEnd();
+                List<Person> items = JsonConvert.DeserializeObject<List<Person>>(json);
+                foreach (var person in items)
+                {
+                    Console.WriteLine(" FirstName: {0},\n LastName: {1},\n Adress: {2},\n City : {3},\n State: {4},\n Zip: {5},\n PhoneNum: {6},\n Email: {7}", person.FirstName, person.LastName, person.Address, person.City, person.State, person.ZipCode, person.PhoneNum, person.EmailId);
+                }
+            }           
 
         }
 
