@@ -28,7 +28,8 @@ namespace AddressBookSystem
                 Console.WriteLine("#5 Search by using city or state");
                 Console.WriteLine("#6 Count by using city or state");
                 Console.WriteLine("#7 Count by FirstName / city / state/Zip");
-                Console.WriteLine("#8 Exit");
+                Console.WriteLine("#8 Writing and reading Stream IO");              
+                Console.WriteLine("#9 Exit");
             }
             while (choice)
             {
@@ -53,14 +54,18 @@ namespace AddressBookSystem
                         break;
                     case 5:
                         Adr.searchperson();
-                        break;                  
+                        break;
                     case 6:
                         Adr.countperson();
                         break;
                     case 7:
                         Adr.sorting();
-                        break;
+                        break;                  
                     case 8:
+                      
+                        Adr.WritingAndReadingStream();
+                        break;
+                    case 9:
                         choice = false;
                         break;
                     default:
@@ -69,7 +74,7 @@ namespace AddressBookSystem
 
                 }
             }
-          static void details()
+            static void details()
             {
                 AddressBook Adr = new AddressBook();
                 Console.WriteLine("Enter FirstName:");
@@ -97,7 +102,7 @@ namespace AddressBookSystem
                 string EmailId = Console.ReadLine();
                 Adr.createUser(FirstName, LastName, Address, City, State, ZipCode, PhoneNum, EmailId);
             }
-           
+
         }
     }
 }

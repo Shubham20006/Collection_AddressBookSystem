@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace AddressBookSystem
 {
+    [Serializable]
     public class Person
     {
         public string FirstName;

@@ -10,11 +10,12 @@ namespace AddressBookSystem
 {
     public interface IAddressBookSystem
     {
-      //  void createUser();
+        //  void createUser();
         void printUser();
         void editContact();
         void deleteContact();
     }
+
     public class AddressBook : IAddressBookSystem
     {
         public static List<Person> People = new List<Person>();
@@ -45,7 +46,7 @@ namespace AddressBookSystem
         }
         public void printUser()
         {
-          
+
             if (People.Count == 0)
             {
                 Console.WriteLine("Your address book is empty.");
@@ -53,7 +54,7 @@ namespace AddressBookSystem
                 return;
             }
             Console.WriteLine("\nHere are the current {0} people in your address book:\n", People.Count);
-          
+
             foreach (var person in People)
             {
                 Console.WriteLine(" FirstName: {0},\n LastName: {1},\n Adress: {2},\n City : {3},\n State: {4},\n Zip: {5},\n PhoneNum: {6},\n Email: {7}", person.FirstName, person.LastName, person.Address, person.City, person.State, person.ZipCode, person.PhoneNum, person.EmailId);
@@ -259,7 +260,8 @@ namespace AddressBookSystem
                         {
                             Console.WriteLine(" FirstName: {0},\n LastName: {1},\n Adress: {2},\n City : {3},\n State: {4},\n Zip: {5},\n PhoneNum: {6},\n Email: {7}", person.FirstName, person.LastName, person.Address, person.City, person.State, person.ZipCode, person.PhoneNum, person.EmailId);
                             Console.WriteLine("________________________________");
-                        }break;
+                        }
+                        break;
 
                     }
                 case "2":
@@ -306,5 +308,21 @@ namespace AddressBookSystem
 
             }
         }
+        public void WritingAndReadingStream()
+        {
+            string path = @"C:\Users\Hp\Desktop\240\AddressBookSystem\AddressBookSystem\written.txt";
+            using (StreamWriter sr = File.AppendText(path))
+            {
+                foreach (var person in People)
+                {
+                    sr.WriteLine(" FirstName: {0},\n LastName: {1},\n Adress: {2},\n City : {3},\n State: {4},\n Zip: {5},\n PhoneNum: {6},\n Email: {7}", person.FirstName, person.LastName, person.Address, person.City, person.State, person.ZipCode, person.PhoneNum, person.EmailId);
+                }
+
+                sr.Close();
+                Console.WriteLine(File.ReadAllText(path));
+            }
+            Console.ReadKey();
+        }
+       
     }
 }
