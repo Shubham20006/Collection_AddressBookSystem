@@ -206,7 +206,40 @@ namespace AddressBookSystem
         }
         public void countperson()
         {
-            Console.WriteLine("\nHere are the current {0} contacts in your address book:\n", People.Count);
+            Console.WriteLine("how you would like to count.");
+            Console.WriteLine("#1: using state\n #2: using city");
+            string inp = Console.ReadLine();
+            switch (inp)
+            {
+                case "1":
+                    {
+                        int count = 0;
+                        foreach (var i in People)
+                        {
+                            if (i.City != null)
+                            {
+                                count++;
+                            }
+                           
+                        }
+                        Console.WriteLine("\nHere are the current {0} contacts in your address book:\n", count); 
+                        break;
+                    }
+                case "2":
+                    {
+                        int count = 0;
+                        foreach (var i in People)
+                        {
+                            if (i.State != null)
+                            {
+                                count++;
+                            }
+
+                        }
+                        Console.WriteLine("\nHere are the current {0} contacts in your address book:\n", count);
+                        break;
+                    }
+            }
         }
     }
 }
