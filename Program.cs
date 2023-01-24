@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -17,6 +18,7 @@ namespace AddressBookSystem
             bool choice = true;
             AddressBook Adr = new AddressBook();
             details();
+          
 
             static void UserChoice()
             {
@@ -28,8 +30,9 @@ namespace AddressBookSystem
                 Console.WriteLine("#5 Search by using city or state");
                 Console.WriteLine("#6 Count by using city or state");
                 Console.WriteLine("#7 Count by FirstName / city / state/Zip");
-                Console.WriteLine("#8 Writing and reading Stream IO");              
-                Console.WriteLine("#9 Exit");
+                Console.WriteLine("#8 Writing and reading Stream IO");
+                Console.WriteLine("#9 Writing and reading CSV");
+                Console.WriteLine("#10 Exit");
             }
             while (choice)
             {
@@ -61,11 +64,13 @@ namespace AddressBookSystem
                     case 7:
                         Adr.sorting();
                         break;                  
-                    case 8:
-                      
+                    case 8:                     
                         Adr.WritingAndReadingStream();
                         break;
                     case 9:
+                      Adr.WritingtoCSV();                      
+                        break;
+                    case 10:
                         choice = false;
                         break;
                     default:

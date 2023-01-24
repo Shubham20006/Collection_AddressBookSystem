@@ -1,10 +1,8 @@
-AddressBookSystem.Person
-System.Collections.Generic.List`1[AddressBookSystem.Person]
- FirstName: shubham,
- LastName: chaudhari,
- Adress: washim,
- City : washim,
- State: mh,
- Zip: djhs,
- PhoneNum: ,dskj,
- Email: mdfjh
+ FirstName: shyam,
+ LastName: ram,
+ Adress: nhnjs,
+ City : mwsj,
+ State: snan,
+ Zip: nsnjn,
+ PhoneNum: smnkk,
+ Email: ,nsdkn
