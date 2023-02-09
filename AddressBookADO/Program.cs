@@ -19,7 +19,6 @@ namespace AddressBookSystem
             ad.GetAllEmployee();
             // ad.UpdateQueryBasedonName();
            // ad.retriveByDate();
-
             AddressModel ar= new AddressModel();
             ar.FirstName = "abhi";
             ar.LastName = "sawant";
