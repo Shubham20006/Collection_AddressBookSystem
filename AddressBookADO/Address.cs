@@ -18,7 +18,7 @@ namespace AddressBookSystem
             try
             {
                
-                AddressModel employee = new AddressModel();
+               AddressModel employee = new AddressModel();
                 using (this.connection)
                 {
                     string query = @"SELECT FirstName,LastName,Address,City,State,zip,PhoneNum,Email,Type,Date from Addressbook";
