@@ -117,8 +117,47 @@ namespace AddressBookSystem
 
             //Close Connection
             connection.Close();
-           
+
         }
+        public bool AddMultipleContact(AddressModel employeeModel)
+        {
+            try
+            {
+                using (this.connection)
+                {
+                    SqlCommand command = new SqlCommand("SpAddEmployeeDetails", this.connection);
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@FirstName", employeeModel.FirstName);
+                    command.Parameters.AddWithValue("@LastName", employeeModel.LastName);
+                    command.Parameters.AddWithValue("@Address", employeeModel.Address);
+                    command.Parameters.AddWithValue("@City", employeeModel.City);
+                    command.Parameters.AddWithValue("@State", employeeModel.State);
+                    command.Parameters.AddWithValue("@zip", employeeModel.zip);
+                    command.Parameters.AddWithValue("@PhoneNum", employeeModel.PhoneNum);
+                    command.Parameters.AddWithValue("@Email", employeeModel.Email);
+                    command.Parameters.AddWithValue("@Type", employeeModel.Type);
+                    command.Parameters.AddWithValue("@Date", employeeModel.Date);
+                  
+                    this.connection.Open();
+                    var results = command.ExecuteNonQuery();
+                    this.connection.Close();
+                    if (results != 0)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            finally
+            {
+                this.connection.Close();
+            }
+        }
+
 
 
     }

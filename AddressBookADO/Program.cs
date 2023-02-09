@@ -16,12 +16,24 @@ namespace AddressBookSystem
         {
             Console.WriteLine("Welcome to Address Book Program");
             Address ad= new Address();
-             ad.GetAllEmployee();
+            ad.GetAllEmployee();
             // ad.UpdateQueryBasedonName();
            // ad.retriveByDate();
 
+            AddressModel ar= new AddressModel();
+            ar.FirstName = "raj";
+            ar.LastName = "patil";
+            ar.Address = "45 bypass";
+            ar.City = "nashik";
+            ar.State = "Rajasthan";
+            ar.zip = "12345";
+            ar.PhoneNum= "9545685621";
+            ar.Email = "Raj1234@gmail.com";
+            ar.Type = "Friends Of Friend";
+            ar.Date = "17/12/2020";
 
-
+          //  ad.AddMultipleContact(ar);
+            
 
 
             //bool choice = true;
