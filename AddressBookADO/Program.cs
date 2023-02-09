@@ -21,18 +21,18 @@ namespace AddressBookSystem
            // ad.retriveByDate();
 
             AddressModel ar= new AddressModel();
-            ar.FirstName = "raj";
-            ar.LastName = "patil";
-            ar.Address = "45 bypass";
-            ar.City = "nashik";
-            ar.State = "Rajasthan";
-            ar.zip = "12345";
-            ar.PhoneNum= "9545685621";
-            ar.Email = "Raj1234@gmail.com";
-            ar.Type = "Friends Of Friend";
-            ar.Date = "17/12/2020";
-
-          //  ad.AddMultipleContact(ar);
+            ar.FirstName = "abhi";
+            ar.LastName = "sawant";
+            ar.Address = "95 street";
+            ar.City = "nagar";
+            ar.State = "MP";
+            ar.zip = "86525";
+            ar.PhoneNum= "8856235325";
+            ar.Email = "abhi856@gmail.com";
+            ar.Type = "Friends";
+            ar.Date = "11/04/2022";
+           //ad.AddMultipleContact(ar);
+          //  ad.AddContact(ar);
             
 
 
