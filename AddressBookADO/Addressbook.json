@@ -1,0 +1,61 @@
+{
+  "Contacts": [
+    {
+      "FirstName": "shubham",
+      "City": "Nanded",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "FirstName": "srushti",
+      "LastName": "patil",
+      "Address": "spttt",
+      "City": "srikakulam",
+      "State": "TN",
+      "zip": "45692",
+      "PhoneNum": "9825631452",
+      "Email": "srushti145@gmail.com",
+      "Type": "family",
+      "Date": "21/10/2020"
+    },
+    {
+      "id": 3,
+      "FirstName": "raj",
+      "LastName": "raut",
+      "Address": "xyz area",
+      "City": "delhi",
+      "State": "Delhi",
+      "zip": "486592",
+      "PhoneNum": "8846523654",
+      "Email": "raj4598@gmail.com",
+      "Type": "Friend",
+      "Date": "14/09/2019"
+    },
+    {
+      "id": 4,
+      "FirstName": "sakshi",
+      "LastName": "mishra",
+      "Address": "143 street",
+      "City": "nashik",
+      "State": "MH",
+      "zip": "145632",
+      "PhoneNum": "9158648562",
+      "Email": "sakshi4598@gmail.com",
+      "Type": "profesional",
+      "Date": "31/01/2022"
+    },
+    {
+      "FirstName": "shivani",
+      "LastName": "jadhav",
+      "Address": "95 street",
+      "City": "nagar",
+      "State": "MP",
+      "zip": "86525",
+      "PhoneNum": "7456892564",
+      "Email": "Shivani458@gmail.com",
+      "Type": "Friends",
+      "Date ": "11/08/2021",
+      "id": 5
+    }
+  ]
+}

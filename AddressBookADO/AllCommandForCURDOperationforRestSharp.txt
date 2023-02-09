@@ -1,0 +1,172 @@
+1) json-server --watch Addressbook.json
+
+2) json-server --port 4000 --routes routes1.json --watch Addressbook.json
+
+  **** Result:- ****
+ 
+  Loading Addressbook.json
+  Loading routes1.json
+  Done
+
+  Resources
+  http://localhost:4000/Contacts
+
+  Other routes
+  /Contacts/list -> /Contacts
+  /Contacts/get/:id -> /Contacts/:id
+  /Contacts/update/:id -> /Contacts/:id
+  /Contacts/delete/:id -> /Contacts/:id
+
+  Home
+  http://localhost:4000
+
+
+3) curl -X GET -H "Content-Type:application/json" "http://localhost:4000/Contacts/list"
+
+   **** Result:- ****
+[
+   {
+    "id": 1,
+    "FirstName": "shubham",
+    "LastName": "chaudhari",
+    "Address": "spttt",
+    "City": "pune",
+    "State": "MH",
+    "zip": "201001",
+    "PhoneNum": "36698875541",
+    "Email": "Shubham@gmail.com",
+    "Type": "Friend",
+    "Date": "07/11/2018"
+  },
+  {
+    "id": 2,
+    "FirstName": "srushti",
+    "LastName": "patil",
+    "Address": "spttt",
+    "City": "srikakulam",
+    "State": "TN",
+    "zip": "45692",
+    "PhoneNum": "9825631452",
+    "Email": "srushti145@gmail.com",
+    "Type": "family",
+    "Date": "21/10/2020"
+  },
+  {
+    "id": 3,
+    "FirstName": "raj",
+    "LastName": "raut",
+    "Address": "xyz area",
+    "City": "delhi",
+    "State": "Delhi",
+    "zip": "486592",
+    "PhoneNum": "8846523654",
+    "Email": "raj4598@gmail.com",
+    "Type": "Friend",
+    "Date": "14/09/2019"
+  },
+  {
+    "id": 4,
+    "FirstName": "sakshi",
+    "LastName": "mishra",
+    "Address": "143 street",
+    "City": "nashik",
+    "State": "MH",
+    "zip": "145632",
+    "PhoneNum": "9158648562",
+    "Email": "sakshi4598@gmail.com",
+    "Type": "profesional",
+    "Date": "31/01/2022"
+  }
+]
+
+
+4) curl -X POST -H "Content-Type:application/json" -d '{"FirstName":"Ram","LastName":"shastri","Address":"chaupati 45","City":"mumbai","State":"MH","zip":"132564","PhoneNum":"9625645452","Email":"ram145@gmail.com","Type":"friend","Date":"01/05/2021"}' "http://localhost:4000/Contacts/create"
+
+   **** Result:- ****
+
+{ 
+ "FirstName": "Ram",
+  "LastName": "shastri",
+  "Address": "chaupati 45",
+  "City": "mumbai",
+  "State": "MH",
+  "zip": "132564",
+  "PhoneNum": "9625645452",
+  "Email": "ram145@gmail.com",
+  "Type": "friend",
+  "Date": "01/05/2021",
+  "id": 5
+}
+
+
+5) curl -X GET -H "Content-Type:application/json" "http://localhost:4000/Contacts/list" 
+
+ **** Result:- ****
+
+[
+ {
+    "id": 1,
+    "FirstName": "shubham",
+    "LastName": "chaudhari",
+    "Address": "spttt",
+    "City": "pune",
+    "State": "MH",
+    "zip": "201001",
+    "PhoneNum": "36698875541",
+    "Email": "Shubham@gmail.com",
+    "Type": "Friend",
+    "Date": "07/11/2018"
+  },
+  {
+    "id": 2,
+    "FirstName": "srushti",
+    "LastName": "patil",
+    "Address": "spttt",
+    "City": "srikakulam",
+    "State": "TN",
+    "zip": "45692",
+    "PhoneNum": "9825631452",
+    "Email": "srushti145@gmail.com",
+    "Type": "family",
+    "Date": "21/10/2020"
+  },
+  {
+    "id": 3,
+    "FirstName": "raj",
+    "LastName": "raut",
+    "Address": "xyz area",
+    "City": "delhi",
+    "State": "Delhi",
+    "zip": "486592",
+    "PhoneNum": "8846523654",
+    "Email": "raj4598@gmail.com",
+    "Type": "Friend",
+    "Date": "14/09/2019"
+  },
+  {
+    "id": 4,
+    "FirstName": "sakshi",
+    "LastName": "mishra",
+    "Address": "143 street",
+    "City": "nashik",
+    "State": "MH",
+    "zip": "145632",
+    "PhoneNum": "9158648562",
+    "Email": "sakshi4598@gmail.com",
+    "Type": "profesional",
+    "Date": "31/01/2022"
+  },
+  {
+    "FirstName": "Ram",
+    "LastName": "shastri",
+    "Address": "chaupati 45",
+    "City": "mumbai",
+    "State": "MH",
+    "zip": "132564",
+    "PhoneNum": "9625645452",
+    "Email": "ram145@gmail.com",
+    "Type": "friend",
+    "Date": "01/05/2021",
+    "id": 5
+  }
+]
