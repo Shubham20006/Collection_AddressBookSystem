@@ -18,5 +18,6 @@ namespace AddressBookSystem
         public string PhoneNum { get; set; }
         public string Email { get; set; }
         public string Type { get; set; }
+        public string Date { get; set; }
     }
 }

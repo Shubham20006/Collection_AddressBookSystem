@@ -21,7 +21,7 @@ namespace AddressBookSystem
                 AddressModel employee = new AddressModel();
                 using (this.connection)
                 {
-                    string query = @"SELECT FirstName,LastName,Address,City,State,zip,PhoneNum,Email,Type from Addressbook";
+                    string query = @"SELECT FirstName,LastName,Address,City,State,zip,PhoneNum,Email,Type,Date from Addressbook";
 
                     SqlCommand cmd = new SqlCommand(query, connection);
                     this.connection.Open();
@@ -41,6 +41,7 @@ namespace AddressBookSystem
                             employee.PhoneNum = dr.GetString(6);
                             employee.Email = dr.GetString(7);
                             employee.Type = dr.GetString(8);
+                            employee.Date= dr.GetString(9);
 
                             count++;
                             Console.WriteLine(employee.FirstName + ", " +employee.LastName+", "+ employee.Address +", "+employee.City+", "+ employee.zip + "," + employee.PhoneNum + ", " + employee.Email + ", " + employee.Type);
@@ -86,7 +87,34 @@ namespace AddressBookSystem
             connection.Close();
             return result;
         }
+        public void retriveByDate()
+        {
+            AddressModel employee = new AddressModel();
+            //Open Connection
+            connection.Open();
+            string query = @"SELECT FirstName,Date from Addressbook";
+            //Pass query to TSql
+            SqlCommand cmd = new SqlCommand(query, connection);
+            SqlDataReader dr = cmd.ExecuteReader();
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    employee.FirstName = dr.GetString(0);
+                    employee.Date = dr.GetString(1);
 
+                    Console.WriteLine(employee.FirstName + "  is created :  " + employee.Date);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Not found!");
+            }
+
+            //Close Connection
+            connection.Close();
+           
+        }
 
 
     }
