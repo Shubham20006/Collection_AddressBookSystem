@@ -39,12 +39,10 @@ namespace AddressBookSystem
                             employee.State = dr.GetString(4);
                             employee.zip = dr.GetString(5);
                             employee.PhoneNum = dr.GetString(6);
-                            employee.Email = dr.GetString(6);
-                            employee.Type = dr.GetString(6);
-
+                            employee.Email = dr.GetString(7);
+                            employee.Type = dr.GetString(8);
 
                             count++;
-
                             Console.WriteLine(employee.FirstName + ", " +employee.LastName+", "+ employee.Address +", "+employee.City+", "+ employee.zip + "," + employee.PhoneNum + ", " + employee.Email + ", " + employee.Type);
                         }
                     }
@@ -67,8 +65,29 @@ namespace AddressBookSystem
             }
             return count;
         }
+        public int UpdateQueryBasedonName()
+        {
+            //Open Connection
+            connection.Open();
+            string query = "Update AddressBook set Email = 'shubhu@gmail.com' where FirstName = 'shubham'";
+            //Pass query to TSql
+            SqlCommand sqlCommand = new SqlCommand(query, connection);
+            int result = sqlCommand.ExecuteNonQuery();
+            if (result != 0)
+            {
+                Console.WriteLine("Updated!");
+            }
+            else
+            {
+                Console.WriteLine("Not Updated!");
+            }
 
-       
+            //Close Connection
+            connection.Close();
+            return result;
+        }
+
+
 
     }
 }
