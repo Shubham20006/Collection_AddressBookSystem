@@ -14,7 +14,7 @@ namespace AddressBookSystem
 
         public int GetAllEmployee()
         {
-            int count = 0;
+            int count=0,count1=0,count2=0;
             try
             {
                
@@ -43,9 +43,13 @@ namespace AddressBookSystem
                             employee.Type = dr.GetString(8);
                             employee.Date= dr.GetString(9);
 
-                            count++;
-                            Console.WriteLine(employee.FirstName + ", " +employee.LastName+", "+ employee.Address +", "+employee.City+", "+ employee.zip + "," + employee.PhoneNum + ", " + employee.Email + ", " + employee.Type);
+                              
+                            Console.WriteLine(employee.FirstName + ", " +employee.LastName+", "+ employee.Address +", "+employee.City+", "+employee.State+", "+ employee.zip + "," + employee.PhoneNum + ", " + employee.Email + ", " + employee.Type);
                         }
+                         
+                       
+                        Console.WriteLine("Count by state : "+ employee.State.Count());
+                        Console.WriteLine("Count by city : " + employee.City.Count());
                     }
                     else
                     {
